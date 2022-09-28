@@ -1,7 +1,10 @@
 import React from 'react';
+import Login from './pages/Login';
+
+import './styles.scss';
 
 const App: React.FC = () => {
-  return <div>Hello World</div>;
+  return <Login />;
 };
 
 export default App;
