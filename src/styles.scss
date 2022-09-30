@@ -133,11 +133,79 @@
           }
         }
       }
+
+      .search {
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+          padding: 10px;
+          input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+
+            &::placeholder {
+              color: #eaeaf6;
+            }
+          }
+        }
+      }
+
+      .userChat {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #eaeaf6;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(161, 121, 92);
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .userChatInfo {
+          span {
+            font-size: 18px;
+            font-weight: 800;
+          }
+          p {
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            color: #e4e4eb;
+          }
+        }
+      }
     }
 
     .chat {
       flex: 2;
       background-color: #eddacd;
+
+      .chatInfo {
+        height: 40px;
+        background-color: #e7b592;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7.5px 10px;
+        color: #e4e4eb;
+
+        img {
+          height: 20px;
+          width: 20px;
+          margin: 0 8px;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
