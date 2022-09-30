@@ -206,6 +206,39 @@
           cursor: pointer;
         }
       }
+
+      .messages {
+        padding: 10px;
+        height: calc(100% - 145px);
+      }
+
+      .input {
+        height: 50px;
+        padding: 10px;
+        background-color: #eaeaf6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+          height: 20px;
+          width: 20px;
+          margin: 0 8px;
+          cursor: pointer;
+        }
+
+        input {
+          width: 85%;
+          border: none;
+          outline: none;
+          font-size: 18px;
+          background-color: transparent;
+
+          &::placeholder {
+            color: black;
+          }
+        }
+      }
     }
   }
 }

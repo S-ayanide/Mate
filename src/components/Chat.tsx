@@ -2,6 +2,8 @@ import React from 'react';
 import Camera from '../assets/video-call.png';
 import AddFriend from '../assets/add-friend.png';
 import More from '../assets/more.png';
+import Messages from './Messages';
+import Input from './Input';
 
 const Chat: React.FC = () => {
   return (
@@ -14,6 +16,8 @@ const Chat: React.FC = () => {
           <img src={More} alt="settings" />
         </div>
       </div>
+      <Messages />
+      <Input />
     </div>
   );
 };
