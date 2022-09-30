@@ -1,6 +1,7 @@
 import React from 'react';
 import Attach from '../assets/attach.png';
 import Picture from '../assets/picture.png';
+import Send from '../assets/send.png';
 
 const Input: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Input: React.FC = () => {
         <label htmlFor="file">
           <img src={Picture} alt="" />
         </label>
+        <img src={Send} alt="" />
       </div>
     </div>
   );
