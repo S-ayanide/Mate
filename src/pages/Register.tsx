@@ -20,6 +20,12 @@ const Register: React.FC = () => {
     const password = Object.values(e.target)[2].value;
     const file = Object.values(e.target)[3].value;
 
+    const fileName = file.split('\\')[file.split('\\').length - 1];
+    if (/\.(jpe?g|png|gif)$/i.test(fileName) === false) {
+      alert('not an image!');
+      return;
+    }
+
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -39,7 +45,7 @@ const Register: React.FC = () => {
             console.log('Uploaded successfully');
             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
               await updateProfile(user, {
-                displayName: displayName,
+                displayName: fileName,
                 photoURL: downloadURL,
               });
 
