@@ -1,5 +1,7 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import logo from '../assets/mote.png';
+import { auth } from '../config';
 
 const Navbar: React.FC = () => {
   return (
@@ -11,7 +13,7 @@ const Navbar: React.FC = () => {
           alt=""
         />
         <span>John</span>
-        <button>Logout</button>
+        <button onClick={() => signOut(auth)}>Logout</button>
       </div>
     </div>
   );
