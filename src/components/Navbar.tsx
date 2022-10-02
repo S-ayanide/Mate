@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
       <img className="logo" src={logo} alt="Mote logo" />
       <div className="user">
         <img src={currentUser?.photoURL as string} alt={currentUser?.displayName as string} />
-        <span>John</span>
+        <span>{currentUser?.displayName?.split(' ')[0] as string}</span>
         <button onClick={() => signOut(auth)}>Logout</button>
       </div>
     </div>
