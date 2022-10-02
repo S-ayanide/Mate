@@ -1,20 +1,13 @@
-// eslint-disable-next-line import/named
-import { signOut, User } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import { signOut } from 'firebase/auth';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/mote.png';
 import { auth } from '../config';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState<User | null>();
-
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setCurrentUser(JSON.parse(user));
-    }
-  }, []);
+  const { currentUser } = useLocalStorage();
 
   return (
     <div className="navbar">

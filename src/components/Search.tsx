@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-// eslint-disable-next-line import/named
-import { User } from 'firebase/auth';
 import {
   collection,
   doc,
@@ -14,22 +12,15 @@ import {
   setDoc,
   updateDoc,
 } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { db } from '../config';
 import Cancel from '../assets/cancel.png';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Search: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [users, setUsers] = useState<DocumentData[] | undefined>(undefined);
-
-  const [currentUser, setCurrentUser] = useState<User | null>();
-
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setCurrentUser(JSON.parse(user));
-    }
-  }, []);
+  const { currentUser } = useLocalStorage();
 
   const handleSearch = async () => {
     const q = query(collection(db, 'users'));
@@ -87,8 +78,6 @@ const Search: React.FC = () => {
       setUsers(undefined);
     }
   };
-
-  console.log(users);
 
   return (
     <div className="search">
