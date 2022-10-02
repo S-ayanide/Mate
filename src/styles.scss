@@ -139,16 +139,42 @@
 
         .searchForm {
           padding: 10px;
+          display: flex;
+          justify-content: space-between;
+
           input {
             background-color: transparent;
             border: none;
             color: white;
             outline: none;
+            padding-bottom: 5px;
+            width: 50%;
+            border-bottom: none;
+            transition: border-bottom 0.5s ease-in-out;
+            transition: width 0.3s ease-in-out;
+
+            &:focus {
+              width: 100%;
+              border-bottom: 1px solid #e7b592;
+            }
 
             &::placeholder {
               color: #eaeaf6;
             }
           }
+
+          img {
+            padding: 0;
+            margin: 0;
+            height: 18px;
+          }
+        }
+
+        p {
+          padding: 10px;
+          margin: 0;
+          font-size: 13px;
+          color: #eaeaf6;
         }
       }
 
