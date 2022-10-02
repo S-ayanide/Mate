@@ -5,12 +5,11 @@ import { auth } from './config';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { useStoreActions, useStoreState } from './store';
+import { useStoreActions } from './store';
 import './styles.scss';
 
 const App: React.FC = () => {
   const setCurrentUser = useStoreActions((actions) => actions.setCurrentUser);
-  const currentUser = useStoreState((state) => state.currentUser);
 
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -30,20 +29,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-      </Routes>
-    </Router>
+    <div className="root">
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

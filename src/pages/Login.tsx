@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/mote.png';
+import SadPug from '../assets/sad_pug.webp';
 import LoadingWrapper from '../components/LoadingWrapper';
 import { auth } from '../config';
 
@@ -34,6 +35,15 @@ const Login: React.FC = () => {
 
   return (
     <LoadingWrapper loading={loading}>
+      <div className="mobile-formContainer">
+        <div className="sad">
+          <img src={SadPug} alt="" />
+        </div>
+        <p>
+          Sorry, we are currently working on our mobile version. For now you can only access the web version at{' '}
+          {import.meta.env.VITE_APP_HOSTING_URL}
+        </p>
+      </div>
       <div className="formContainer">
         <div className="formWrapper">
           <img className="logo" src={logo} alt="Mote logo" />
