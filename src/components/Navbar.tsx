@@ -1,11 +1,20 @@
-import { signOut } from 'firebase/auth';
-import React, { useContext } from 'react';
+// eslint-disable-next-line import/named
+import { signOut, User } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/mote.png';
 import { auth } from '../config';
-import { AuthContext } from '../context/AuthContext';
 
 const Navbar: React.FC = () => {
-  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState<User | null>();
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setCurrentUser(JSON.parse(user));
+    }
+  }, []);
 
   return (
     <div className="navbar">
@@ -13,7 +22,15 @@ const Navbar: React.FC = () => {
       <div className="user">
         <img src={currentUser?.photoURL as string} alt={currentUser?.displayName as string} />
         <span>{currentUser?.displayName?.split(' ')[0] as string}</span>
-        <button onClick={() => signOut(auth)}>Logout</button>
+        <button
+          onClick={() => {
+            signOut(auth);
+            localStorage.removeItem('user');
+            navigate('/login');
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
