@@ -9,7 +9,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [file, setFile] = React.useState<File>();
+
   // TODO: Create a toaster to handle error
+
+  const handleFileChange = (event: React.ChangeEvent) => {
+    const target = event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    setFile(file);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // TODO: Add a loader while user is registering
@@ -18,51 +26,52 @@ const Register: React.FC = () => {
     const displayName = Object.values(e.target)[0].value;
     const email = Object.values(e.target)[1].value;
     const password = Object.values(e.target)[2].value;
-    const file = event.target[3].files[0] as File;
 
-    const fileName = file.name;
-    const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
-    if (/\.(jpe?g|png|gif)$/i.test(fileName) === false) {
-      alert('not an image!');
-      return;
-    }
+    if (file) {
+      const fileName = file.name;
+      const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
+      if (/\.(jpe?g|png|gif)$/i.test(fileName) === false) {
+        alert('not an image!');
+        return;
+      }
 
-    try {
-      //Create user
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+      try {
+        //Create user
+        const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      const storageRef = ref(storage, displayName);
+        const storageRef = ref(storage, displayName);
 
-      const metadata = {
-        contentType: `image/${fileExtension}`,
-      };
+        const metadata = {
+          contentType: `image/${fileExtension}`,
+        };
 
-      await uploadBytesResumable(storageRef, file, metadata).then(() => {
-        getDownloadURL(storageRef).then(async (downloadURL) => {
-          try {
-            //Update profile
-            await updateProfile(res.user, {
-              displayName,
-              photoURL: downloadURL,
-            });
-            //create user on firestore
-            await setDoc(doc(db, 'users', res.user.uid), {
-              uid: res.user.uid,
-              displayName,
-              email,
-              photoURL: downloadURL,
-            });
+        await uploadBytesResumable(storageRef, file, metadata).then(() => {
+          getDownloadURL(storageRef).then(async (downloadURL) => {
+            try {
+              //Update profile
+              await updateProfile(res.user, {
+                displayName,
+                photoURL: downloadURL,
+              });
+              //create user on firestore
+              await setDoc(doc(db, 'users', res.user.uid), {
+                uid: res.user.uid,
+                displayName,
+                email,
+                photoURL: downloadURL,
+              });
 
-            //create empty user chats on firestore
-            await setDoc(doc(db, 'userChats', res.user.uid), {});
-            navigate('/');
-          } catch (err) {
-            console.log(err);
-          }
+              //create empty user chats on firestore
+              await setDoc(doc(db, 'userChats', res.user.uid), {});
+              navigate('/');
+            } catch (err) {
+              console.log(err);
+            }
+          });
         });
-      });
-    } catch (err) {
-      console.error(err);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
@@ -75,7 +84,7 @@ const Register: React.FC = () => {
           <input type="text" placeholder="Display Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <input className="inputForAvatar" type="file" id="avatar" />
+          <input className="inputForAvatar" type="file" id="avatar" onChange={(event) => handleFileChange(event)} />
           <label htmlFor="avatar">
             <img src={userAvatar} alt="Avatar input" />
             <span>Add an avatar</span>
