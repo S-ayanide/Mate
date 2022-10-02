@@ -12,6 +12,7 @@ const Register: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const [file, setFile] = useState<File>();
+  const [error, setError] = useState<string | undefined>();
 
   // TODO: Create a toaster to handle error
 
@@ -68,16 +69,18 @@ const Register: React.FC = () => {
               await setDoc(doc(db, 'userChats', res.user.uid), {});
               navigate('/');
             } catch (err) {
-              console.error(err);
+              setError((err as any).message);
             }
           });
         });
       } catch (err) {
-        console.error(err);
+        setError((err as any).message);
       }
     }
     setLoading(false);
   };
+
+  console.log(error);
 
   return (
     <LoadingWrapper loading={loading}>
@@ -94,6 +97,7 @@ const Register: React.FC = () => {
               <img src={userAvatar} alt="Avatar input" />
               <span>{file ? file.name : 'Add an avatar'}</span>
             </label>
+            <div className="error">{error && <p>{error}</p>}</div>
             <button>Sign Up</button>
           </form>
           <p>

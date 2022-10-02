@@ -7,6 +7,7 @@ import { auth } from '../config';
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>();
   const navigate = useNavigate();
   // TODO: Create a toaster to handle error
 
@@ -25,7 +26,7 @@ const Login: React.FC = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.error(errorMessage);
+        setError(errorMessage);
       });
 
     setLoading(false);
@@ -40,6 +41,7 @@ const Login: React.FC = () => {
           <form onSubmit={(event) => handleSubmit(event)}>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
+            <div className="error">{error && <p>{error}</p>}</div>
 
             <button>Sign In</button>
           </form>
