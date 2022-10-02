@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     if (user) {
       setCurrentUser(JSON.parse(user));
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <div className="navbar">
