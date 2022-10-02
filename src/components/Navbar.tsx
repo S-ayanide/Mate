@@ -7,7 +7,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const { currentUser } = useLocalStorage();
+  const { currentUser } = useLocalStorage('user');
 
   return (
     <div className="navbar">

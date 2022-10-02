@@ -20,7 +20,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 const Search: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [users, setUsers] = useState<DocumentData[] | undefined>(undefined);
-  const { currentUser } = useLocalStorage();
+  const { currentUser } = useLocalStorage('user');
 
   const handleSearch = async () => {
     const q = query(collection(db, 'users'));
