@@ -4,9 +4,11 @@ import { action, createStore, Action, createTypedHooks } from 'easy-peasy';
 import { User } from 'firebase/auth';
 
 interface StoreModel {
+  currentUser: User | undefined;
   activeUser: User | undefined;
   chatID: string;
   setActiveUser: Action<StoreModel, User | undefined>;
+  setCurrentUser: Action<StoreModel, User | undefined>;
   setChatID: Action<StoreModel, string>;
 }
 
@@ -18,7 +20,11 @@ export const useStoreState = typedHooks.useStoreState;
 
 export default createStore<StoreModel>({
   activeUser: undefined,
+  currentUser: undefined,
   chatID: '',
+  setCurrentUser: action((state, payload) => {
+    state.currentUser = payload;
+  }),
   setActiveUser: action((state, payload) => {
     state.activeUser = payload;
   }),

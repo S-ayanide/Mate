@@ -7,7 +7,6 @@ import Picture from '../assets/picture.png';
 import Send from '../assets/send.png';
 import { db, storage } from '../config';
 import { v4 as uuid } from 'uuid';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useStoreState } from '../store';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
@@ -15,7 +14,7 @@ const Input: React.FC = () => {
   const [text, setText] = useState<string>('');
   const [img, setImg] = useState<File | null>(null);
 
-  const { currentUser } = useLocalStorage('user');
+  const currentUser = useStoreState((state) => state.currentUser);
   const activeUser = useStoreState((state) => state.activeUser);
   const chatID = useStoreState((state) => state.chatID);
 
@@ -79,12 +78,18 @@ const Input: React.FC = () => {
     }
   };
 
+  const handleKey = (event: any) => {
+    console.log(event);
+    event.key === 'Enter' && handleSend();
+  };
+
   return (
     <div className="input">
       <input
         type="text"
         value={text}
         placeholder="Type your message"
+        onKeyPress={handleKey}
         onChange={(event) => setText(event.target.value)}
       />
       <div className="send">

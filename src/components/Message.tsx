@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/named
 import { DocumentData } from 'firebase/firestore';
 import React, { useEffect, useRef } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useStoreState } from '../store';
 
 interface IMessage {
@@ -9,7 +8,7 @@ interface IMessage {
 }
 
 const Message: React.FC<IMessage> = ({ message }) => {
-  const { currentUser } = useLocalStorage('user');
+  const currentUser = useStoreState((state) => state.currentUser);
   const activeUser = useStoreState((state) => state.activeUser);
 
   const ref = useRef<any>(null);

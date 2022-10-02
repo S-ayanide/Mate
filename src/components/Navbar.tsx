@@ -3,11 +3,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/mote.png';
 import { auth } from '../config';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useStoreState } from '../store';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const { currentUser } = useLocalStorage('user');
+  const currentUser = useStoreState((state) => state.currentUser);
 
   return (
     <div className="navbar">

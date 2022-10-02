@@ -5,12 +5,19 @@ import { auth } from './config';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { useStoreActions, useStoreState } from './store';
 import './styles.scss';
 
 const App: React.FC = () => {
+  const setCurrentUser = useStoreActions((actions) => actions.setCurrentUser);
+  const currentUser = useStoreState((state) => state.currentUser);
+
   useLayoutEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user !== null) localStorage.setItem('user', JSON.stringify(user));
+      if (user !== null) {
+        localStorage.setItem('user', JSON.stringify(user));
+        setCurrentUser(user);
+      }
     });
   }, []);
 

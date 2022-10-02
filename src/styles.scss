@@ -238,6 +238,15 @@
         height: calc(100% - 145px);
         overflow: auto;
 
+        .centerText {
+          margin-top: 50%;
+          display: flex;
+          color: rgb(165, 165, 165);
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+        }
+
         .message {
           display: flex;
           gap: 20px;

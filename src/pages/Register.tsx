@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/mote.png';
 import userAvatar from '../assets/add-user.png';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -6,10 +6,12 @@ import { auth, db, storage } from '../config';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
+import LoadingWrapper from '../components/LoadingWrapper';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
-  const [file, setFile] = React.useState<File>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [file, setFile] = useState<File>();
 
   // TODO: Create a toaster to handle error
 
@@ -20,6 +22,7 @@ const Register: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     // TODO: Add a loader while user is registering
 
     e.preventDefault();
@@ -73,29 +76,32 @@ const Register: React.FC = () => {
         console.error(err);
       }
     }
+    setLoading(false);
   };
 
   return (
-    <div className="formContainer">
-      <div className="formWrapper">
-        <img className="logo" src={logo} alt="Mote logo" />
-        <span className="title">Register</span>
-        <form onSubmit={(event) => handleSubmit(event)}>
-          <input type="text" placeholder="Display Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <input className="inputForAvatar" type="file" id="avatar" onChange={(event) => handleFileChange(event)} />
-          <label htmlFor="avatar">
-            <img src={userAvatar} alt="Avatar input" />
-            <span>Add an avatar</span>
-          </label>
-          <button>Sign Up</button>
-        </form>
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
+    <LoadingWrapper loading={loading}>
+      <div className="formContainer">
+        <div className="formWrapper">
+          <img className="logo" src={logo} alt="Mote logo" />
+          <span className="title">Register</span>
+          <form onSubmit={(event) => handleSubmit(event)}>
+            <input type="text" placeholder="Display Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <input className="inputForAvatar" type="file" id="avatar" onChange={(event) => handleFileChange(event)} />
+            <label htmlFor="avatar">
+              <img src={userAvatar} alt="Avatar input" />
+              <span>{file ? file.name : 'Add an avatar'}</span>
+            </label>
+            <button>Sign Up</button>
+          </form>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </LoadingWrapper>
   );
 };
 

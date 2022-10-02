@@ -7,6 +7,7 @@ import Message from './Message';
 
 const Messages: React.FC = () => {
   const [messages, setMessages] = useState<DocumentData[] | undefined>();
+  const activeUser = useStoreState((state) => state.activeUser);
   const chatID = useStoreState((state) => state.chatID);
 
   useEffect(() => {
@@ -21,13 +22,17 @@ const Messages: React.FC = () => {
     }
   }, [chatID]);
 
-  console.log(messages);
-
   return (
     <div className="messages">
-      {messages?.map((message) => (
-        <Message key={message.id} message={message} />
-      ))}
+      {activeUser ? (
+        messages?.map((message) => <Message key={message.id} message={message} />)
+      ) : (
+        <div className="centerText">
+          Please select a user to see conversation
+          <br />
+          or add a friend if there are no users
+        </div>
+      )}
     </div>
   );
 };

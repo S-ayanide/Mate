@@ -6,12 +6,11 @@ import { User } from 'firebase/auth';
 import { doc, DocumentData, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { db } from '../config';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { useStoreActions } from '../store';
+import { useStoreActions, useStoreState } from '../store';
 
 const Chats: React.FC = () => {
   const [chats, setChats] = useState<{ [s: string]: DocumentData } | ArrayLike<DocumentData> | undefined>();
-  const { currentUser } = useLocalStorage('user');
+  const currentUser = useStoreState((state) => state.currentUser);
   const setActiveUser = useStoreActions((actions) => actions.setActiveUser);
   const setChatID = useStoreActions((actions) => actions.setChatID);
 

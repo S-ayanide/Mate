@@ -15,12 +15,12 @@ import {
 import React, { useState } from 'react';
 import { db } from '../config';
 import Cancel from '../assets/cancel.png';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useStoreState } from '../store';
 
 const Search: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [users, setUsers] = useState<DocumentData[] | undefined>(undefined);
-  const { currentUser } = useLocalStorage('user');
+  const currentUser = useStoreState((state) => state.currentUser);
 
   const handleSearch = async () => {
     const q = query(collection(db, 'users'));
