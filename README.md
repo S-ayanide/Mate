@@ -7,13 +7,13 @@ Mate is a new age, instant messaging service that also provides optional end-to-
 ## Screenshots
 
 <div style={{display: "flex"}} >
-<img width="500px" src="https://user-images.githubusercontent.com/34975209/194766012-4141a103-14e5-47ea-ae26-196828bd91be.png" />
-<img width="500px" src="https://user-images.githubusercontent.com/34975209/194766015-37e2970b-93a2-438c-a532-cbc92b777400.png" />
+<img width="350px" src="https://user-images.githubusercontent.com/34975209/194766012-4141a103-14e5-47ea-ae26-196828bd91be.png" />
+<img width="350px" src="https://user-images.githubusercontent.com/34975209/194766015-37e2970b-93a2-438c-a532-cbc92b777400.png" />
 </div>
 
 <div style={{display: "flex"}} >
-<img width="500px" src="https://user-images.githubusercontent.com/34975209/194766016-73c08c65-4120-4b6c-8e2e-1fd074287361.png" />
-<img width="500px" src="https://user-images.githubusercontent.com/34975209/194766021-85bc7209-0e38-446b-ada4-91a8f840e57e.png" />
+<img width="350px" src="https://user-images.githubusercontent.com/34975209/194766016-73c08c65-4120-4b6c-8e2e-1fd074287361.png" />
+<img width="350px" src="https://user-images.githubusercontent.com/34975209/194766021-85bc7209-0e38-446b-ada4-91a8f840e57e.png" />
 </div>
 
 ## Things to do
