@@ -28,6 +28,13 @@ const App: React.FC = () => {
     return <>{children}</>;
   };
 
+  const CheckRoute = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+    if (typeof localStorage['user'] !== 'undefined') {
+      return <Navigate to="/" />;
+    }
+    return <>{children}</>;
+  };
+
   return (
     <div className="root">
       <Router>
@@ -40,8 +47,22 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <CheckRoute>
+                <Login />
+              </CheckRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <CheckRoute>
+                <Register />
+              </CheckRoute>
+            }
+          />
         </Routes>
       </Router>
     </div>
