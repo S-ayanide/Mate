@@ -2,6 +2,7 @@
 
 Mate is a new age, instant messaging service that also provides optional end-to-end encrypted chats, file sharing, and several other features.
 
+https://mate-chi.vercel.app
 ### 👉 If you like this repo then please give it a ⭐️
 
 ## Screenshots
