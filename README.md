@@ -22,7 +22,7 @@ https://mate-chi.vercel.app
 * Chat and indulgue in a conversation
 * Invite and add friends
 * Login/Register
-* Share imagesTech Stack
+* Share images
 
 ## Tech Stack
 
