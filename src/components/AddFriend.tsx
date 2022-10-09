@@ -32,11 +32,12 @@ const AddFriend: React.FC = () => {
               video calling, file sharing, and several other features.
             </p>
             <p>
-              has given you a special invite to join them on Mate, and carry on the conversation.
+              {currentUser?.displayName} has given you a special invite to join them on Mate, and carry on the
+              conversation.
               <br />
               <br />
               Don&apos;t miss out on this opportunity and click here to accept your invitation:{' '}
-              <a href="http://localhost:5173/signup" target="_blank" rel="noopener noreferrer">
+              <a href={`${import.meta.env.VITE_APP_HOSTING_URL}/signup`} target="_blank" rel="noopener noreferrer">
                 Accept Invitation
               </a>
               <br />
