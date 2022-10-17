@@ -1,9 +1,24 @@
-# Mate
-
-Mate is a new age, instant messaging service that also provides optional end-to-end encrypted chats, file sharing, and several other features.
-
-https://mate-chi.vercel.app
-### 👉 If you like this repo then please give it a ⭐️
+<div align="center">
+  <a href="https://mate-chi.vercel.app/"><img src="https://i.ibb.co/R3dBGgz/mote-9f1bb2eb.png" alt="Mate" height=170></a>
+  <br />
+  <h1>Mate</h1>
+  <h3>Mate is a new age, instant messaging service that also provides optional </br> end-to-end encrypted chats, file sharing, and several other features.</h3>
+  <a href="https://github.com/S-ayanide/Mate/blob/main/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/github/license/S-ayanide/Mate" />
+  </a>
+  <img alt="Start" src="https://img.shields.io/github/stars/S-ayanide/Mate" />
+  <br />
+  <a href="https://twitter.com/s_ayanide">
+    <img alt="Twitter" src="https://img.shields.io/twitter/url.svg?label=%40s_ayanide&style=social&url=https%3A%2F%2Ftwitter.com%2Fs_ayanide" />
+  </a>
+  <br />
+  <br />
+  <div>
+    https://mate-chi.vercel.app
+  </div>
+  <p>👉 If you like this repo then please give it a ⭐️</p>
+  <br />
+</div>
 
 ## Screenshots
 
@@ -17,7 +32,7 @@ https://mate-chi.vercel.app
 <img width="350px" src="https://user-images.githubusercontent.com/34975209/194766021-85bc7209-0e38-446b-ada4-91a8f840e57e.png" />
 </div>
 
-## Things to do
+## Features
 
 * Chat and indulgue in a conversation
 * Invite and add friends
@@ -35,7 +50,7 @@ https://mate-chi.vercel.app
 * Firebase
 * Easy Peasy (For state management)
 
-# How to run this
+# Quickstart
 
 Follow these steps to get up and running with the project on local
 
@@ -44,6 +59,15 @@ Follow these steps to get up and running with the project on local
 * Install the packages using yarn `yarn install`
 * Export the necessary envs
 * Run the local frontend server: `yarn dev`
+
+## Core Team
+
+<table>
+  <tr>
+    <td align="center"><a href="https://twitter.com/s_ayanide"><img src="https://avatars.githubusercontent.com/u/34975209?s=40&v=4" width="100px;" alt=""/><br /><sub><b>Sayan</b></sub></a></td>
+    <td>👋 Hi, I'm Sayan and I am the creator of Mate, don't hesitate to contact me on <a href="https://twitter.com/s_ayanide">Twitter</a> or <a href="mailto:sayanmondal342@gmail.com">email</a> if you are curious about the project in any way.</td>
+  </tr>
+</table>
 
 # Pull Request
 Pull Requests are welcome. Please follow these rules for the ease of understanding:
