@@ -32,6 +32,16 @@
 <img width="350px" src="https://user-images.githubusercontent.com/34975209/194766021-85bc7209-0e38-446b-ada4-91a8f840e57e.png" />
 </div>
 
+## Description
+
+Mate is an open-source project that is designed to make it easier to find and connect with like-minded individuals in a given community. The project is built with a focus on community building and user engagement.
+
+The project includes a web application that allows users to interact with each other in real-time through chat and messaging features. Additionally, the project includes a recommendation system that suggests other users to connect with each other based on a user's interests and activities.
+
+The Mate project is built with modern web technologies such as TypeScript, React, and Node.js and is designed to be highly performant and scalable. The project also includes a robust set of tech stack and follows Airbnb's best practices.
+
+Overall, the Mate project aims to bring people together and foster a sense of community and belonging. It is perfect for anyone looking to expand their social circle, find like-minded individuals and explore new interests.
+
 ## Features
 
 * Chat and indulgue in a conversation
